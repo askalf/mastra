@@ -712,7 +712,7 @@ export class AuthStorage {
       (async (): Promise<OAuthCredentials | undefined> => {
         try {
           const fresh = await provider.refreshToken(cred);
-          this.persistActiveCredential(providerId, fresh);
+          this.persistRefreshedCredential(providerId, activeEntry?.id, fresh);
           return fresh;
         } catch {
           return undefined;
