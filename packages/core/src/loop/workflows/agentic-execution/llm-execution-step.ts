@@ -2155,7 +2155,12 @@ export function createLLMExecutionStep<TOOLS extends ToolSet = ToolSet, OUTPUT =
         writeScoped(scopeCtx, STEP_WORKSPACE_KEY, 'stepWorkspace', existingWorkspace);
       }
 
-      const bailFromExecution = () => {
+      // `reason` distinguishes why the step bailed. A caller abort and a processor
+      // tripwire both stop the loop here, but reporting an abort as 'tripwire' makes
+      // the output layer synthesize a processor tripwire for a run that has no
+      // processors (issue #23969), so a caller cancellation is indistinguishable from
+      // an actual processor rejection.
+      const bailFromExecution = (reason: 'tripwire' | 'abort' = 'tripwire') => {
         const usage = outputStream._getImmediateUsage();
         const responseMetadata = runState.state.responseMetadata;
         const text = outputStream._getImmediateText();
@@ -2163,7 +2168,7 @@ export function createLLMExecutionStep<TOOLS extends ToolSet = ToolSet, OUTPUT =
         return bail({
           messageId: outputStream.messageId,
           stepResult: {
-            reason: 'tripwire',
+            reason,
             warnings,
             isContinued: false,
           },
@@ -2189,7 +2194,7 @@ export function createLLMExecutionStep<TOOLS extends ToolSet = ToolSet, OUTPUT =
       };
 
       if (callBail) {
-        return bailFromExecution();
+        return bailFromExecution(options?.abortSignal?.aborted ? 'abort' : 'tripwire');
       }
 
       // The failed attempt's materialization id, captured before processAPIError
@@ -2262,7 +2267,7 @@ export function createLLMExecutionStep<TOOLS extends ToolSet = ToolSet, OUTPUT =
           text: runState.state.partialText,
         });
         safeEnqueue(controller, { type: 'abort', runId, from: ChunkFrom.AGENT, payload: {} });
-        return bailFromExecution();
+        return bailFromExecution('abort');
       }
 
       // If processAPIError signaled retry, return early with retry metadata
