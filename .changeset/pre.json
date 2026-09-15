@@ -187,5 +187,18 @@
     "@mastra/s3": "0.6.3",
     "@mastra/vercel": "1.6.0"
   },
-  "changesets": []
+  "changesets": [
+    "automated-provider-registry-20260915-122946",
+    "factory-intake-org-scope",
+    "fresh-parrots-fix",
+    "happy-tigers-fix",
+    "honest-hounds-fold",
+    "jolly-apples-shop",
+    "posthog-ai-capture-endpoint",
+    "quiet-tools-share-schema",
+    "real-parents-chew",
+    "shaky-readers-listen",
+    "studio-settings-reachable-without-login",
+    "witty-lions-persist"
+  ]
 }

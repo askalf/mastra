@@ -1,5 +1,20 @@
 # @mastra/playground-ui
 
+## 55.0.1-alpha.0
+
+### Patch Changes
+
+- Fixed trace and span panel navigation and close actions to use ghost buttons. ([#23994](https://github.com/mastra-ai/mastra/pull/23994))
+
+- Fixed trace score details opening below the trace panel instead of in its right-hand detail column. ([#23994](https://github.com/mastra-ai/mastra/pull/23994))
+
+- Moved trace scoring to a primary header action that opens a searchable scorer selection dialog in Studio. ([#23994](https://github.com/mastra-ai/mastra/pull/23994))
+
+- Updated dependencies [[`1e68460`](https://github.com/mastra-ai/mastra/commit/1e68460205d0061c6dbc7a7e7a50950236af774b), [`cd6948c`](https://github.com/mastra-ai/mastra/commit/cd6948c50aa4478d795613bdfa2d5259a7045026), [`096825c`](https://github.com/mastra-ai/mastra/commit/096825c0cc37de5f465ecdc6617d642b8c898a78), [`34fd538`](https://github.com/mastra-ai/mastra/commit/34fd538060402e414bdf65af9f469e7bff60be1e)]:
+  - @mastra/core@1.68.0-alpha.0
+  - @mastra/client-js@1.46.1-alpha.0
+  - @mastra/react@1.5.1-alpha.0
+
 ## 55.0.0
 
 ### Minor Changes

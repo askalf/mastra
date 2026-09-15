@@ -1,5 +1,15 @@
 # @mastra/factory
 
+## 0.15.1-alpha.0
+
+### Patch Changes
+
+- Fixed GitHub and Linear intake selections being personal: which repositories and Linear projects feed a Factory board is now one organization-wide setting, so every member sees the same intake instead of an empty board until they enable the sources themselves. Existing per-member selections are merged into the shared one on the next start (a source stays selected if any member was syncing it), and the Intake settings now carry the Org-wide badge. ([#23982](https://github.com/mastra-ai/mastra/pull/23982))
+
+- Updated dependencies [[`1e68460`](https://github.com/mastra-ai/mastra/commit/1e68460205d0061c6dbc7a7e7a50950236af774b), [`cd6948c`](https://github.com/mastra-ai/mastra/commit/cd6948c50aa4478d795613bdfa2d5259a7045026), [`096825c`](https://github.com/mastra-ai/mastra/commit/096825c0cc37de5f465ecdc6617d642b8c898a78), [`34fd538`](https://github.com/mastra-ai/mastra/commit/34fd538060402e414bdf65af9f469e7bff60be1e)]:
+  - @mastra/core@1.68.0-alpha.0
+  - @mastra/code-sdk@1.7.3-alpha.0
+
 ## 0.15.0
 
 ### Minor Changes

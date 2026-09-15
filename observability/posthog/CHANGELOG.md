@@ -1,5 +1,14 @@
 # @mastra/posthog
 
+## 1.3.11-alpha.0
+
+### Patch Changes
+
+- Fixed large spans being rejected by PostHog. The exporter now sends `$ai_*` events through posthog-node's dedicated AI capture endpoint (`captureAi()`), which accepts events up to 8 MiB and drops only an oversized event instead of failing the whole batch. Bumps `posthog-node` to `^5.49.0`. Fixes [#23845](https://github.com/mastra-ai/mastra/issues/23845). ([#23911](https://github.com/mastra-ai/mastra/pull/23911))
+
+- Updated dependencies [[`1e68460`](https://github.com/mastra-ai/mastra/commit/1e68460205d0061c6dbc7a7e7a50950236af774b), [`cd6948c`](https://github.com/mastra-ai/mastra/commit/cd6948c50aa4478d795613bdfa2d5259a7045026), [`096825c`](https://github.com/mastra-ai/mastra/commit/096825c0cc37de5f465ecdc6617d642b8c898a78), [`34fd538`](https://github.com/mastra-ai/mastra/commit/34fd538060402e414bdf65af9f469e7bff60be1e)]:
+  - @mastra/core@1.68.0-alpha.0
+
 ## 1.3.10
 
 ### Patch Changes

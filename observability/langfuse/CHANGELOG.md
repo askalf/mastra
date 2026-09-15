@@ -1,5 +1,14 @@
 # @mastra/langfuse
 
+## 1.5.8-alpha.0
+
+### Patch Changes
+
+- Fixed the Langfuse exporter sending each span's input and output twice. The payload was written to the observation's input and output fields and then repeated inside its metadata, roughly doubling what Langfuse ingests and stores for workflow, agent and processor spans. Traces look the same as before: the values still appear in the observation's input and output, only the duplicate copy in the metadata is gone. Model generation and tool call spans were never affected. Fixes #23955. ([#23956](https://github.com/mastra-ai/mastra/pull/23956))
+
+- Updated dependencies [[`1e68460`](https://github.com/mastra-ai/mastra/commit/1e68460205d0061c6dbc7a7e7a50950236af774b), [`cd6948c`](https://github.com/mastra-ai/mastra/commit/cd6948c50aa4478d795613bdfa2d5259a7045026), [`096825c`](https://github.com/mastra-ai/mastra/commit/096825c0cc37de5f465ecdc6617d642b8c898a78), [`34fd538`](https://github.com/mastra-ai/mastra/commit/34fd538060402e414bdf65af9f469e7bff60be1e)]:
+  - @mastra/core@1.68.0-alpha.0
+
 ## 1.5.7
 
 ### Patch Changes
